@@ -14,6 +14,7 @@ const page = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    console.log(document.cookie);
     console.log(data);
   };
   return (
@@ -22,20 +23,18 @@ const page = () => {
         <div className="flex justify-center items-center h-screen">
           <form
             action=""
-            className=" w-full "
+            className=" w-1/2 flex justify-center py-3 "
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className=" w-1/2 p-3  bg-white">
+            <div className=" w-2/3  py-20 rounded-lg  bg-white">
               <div className="w-full">
                 <h1 className="text-2xl text-center font-bold">Login</h1>
                 <div className="w-full flex justify-center py-3">
-                  <div className="w-1/2 ">
-                    <div className="border w-full flex py-3 px-2 rounded-lg ">
-                      {errors.email && (
-                        <div className="text-red-500">
-                          {errors.email.message}
-                        </div>
-                      )}
+                  <div className="w-2/3">
+                    {errors.email && (
+                      <div className="text-red-500">{errors.email.message}</div>
+                    )}
+                    <div className="border w-full flex justify-around py-3 px-2 rounded-lg  outline-none">
                       <input
                         {...register("email", {
                           required: {
@@ -54,12 +53,12 @@ const page = () => {
                       />
                       <MdOutlineMailOutline className="text-2xl" />
                     </div>
-                    <div className="border py-3 mt-5 w-full px-2 flex rounded-lg outline-none">
-                      {errors.password && (
-                        <div className="text-red-500">
-                          {errors.password.message}
-                        </div>
-                      )}
+                    {errors.password && (
+                      <div className="text-red-500">
+                        {errors.password.message}
+                      </div>
+                    )}
+                    <div className="border w-full flex  py-3 px-2 rounded-lg  outline-none mt-5">
                       <input
                         {...register("password", {
                           required: {
@@ -75,23 +74,24 @@ const page = () => {
                             message: "Password have less than 20 character.",
                           },
                         })}
-                        className="outline-none w-full"
+                        className="outline-none w-full px-5 "
                         placeholder="Enter paswword"
                         type="password"
                       />
-                      <RiLockPasswordFill />
+                      {/* <RiLockPasswordFill className="text-2xl" /> */}
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div className="w-full flex justify-center ">
-                <button
-                  type="submit"
-                  className="bg-blue-500 w-1/2 text-white px-3 py-2 rounded-lg"
-                >
-                  Submit
-                </button>
+              <div className="w-full  ">
+                <div className="flex w-full justify-center">
+                  <button
+                    type="submit"
+                    className="bg-blue-500 w-2/3 mt-1 text-white px-3 py-2 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
               <div className="text-center text-blue-500">
                 <a href="/">forget password</a>
@@ -99,9 +99,12 @@ const page = () => {
               <div className="text-center text-blue-500">
                 <a href="/signup">Don't have Account? Signup</a>
               </div>
-              <div className="flex justify-center">
-                <div className="flex justify-center items-center border-2 w-1/2 rounded-lg ">
-                  <button className="bg-white w-1/2 text-black px-3 py-2 rounded-lg">
+              <div className=" w-full flex justify-center mt-4">
+                <div className="flex  w-2/3 justify-center items-center border-2  rounded-lg  hover:cursor-pointer ">
+                  <button
+                    type="button"
+                    className="bg-white w-2/3 text-black px-3 py-2 rounded-lg  hover:cursor-pointer"
+                  >
                     Signup with Google
                   </button>
                   <FaGoogle className="text-2xl text-red-300" />
