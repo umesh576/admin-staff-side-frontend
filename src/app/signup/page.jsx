@@ -114,8 +114,33 @@ const SignupPage = () => {
                   <div>
                     <input
                       type="password"
-                      placeholder="Password"
+                      placeholder="password"
                       {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is Required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Password is more than 6 character.",
+                        },
+                        maxLength: {
+                          value: 100,
+                          message: "Password is less than 100 character.",
+                        },
+                      })}
+                    />
+                  </div>
+                </div>
+                {/* <div>
+                  {errors.confirmPassword && (
+                    <div>{errors.confirmPassword.message}</div>
+                  )}
+                  <div>
+                    <input
+                      type="password"
+                      placeholder="conform password"
+                      {...register("confirmPassword", {
                         required: {
                           value: true,
                           message: "Password is Required",
@@ -128,10 +153,12 @@ const SignupPage = () => {
                           value: 100,
                           message: "Passoword is less than 100 character.",
                         },
+                        validate: (value) =>
+                          value === password || "password doen't match",
                       })}
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
               <div>
                 <div>
