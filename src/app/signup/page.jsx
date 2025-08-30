@@ -2,17 +2,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
+import { yupResolver } from "./../../../node_modules/@hookform/resolvers/yup/src/yup";
 
 const SignupPage = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+  });
 
   const onSubmit = (data) => {
     console.log(data);
+    console.log("umesh");
   };
   return (
     <div className="absolute h-screen w-full bg-sky-300">
@@ -39,22 +42,7 @@ const SignupPage = () => {
                       <input
                         type="text"
                         placeholder="Firstname"
-                        {...register("firstName", {
-                          required: {
-                            value: true,
-                            message: "Firstname required for signup",
-                          },
-                          minLength: {
-                            value: 3,
-                            message:
-                              "Minimun 3 character are necessary for register.",
-                          },
-                          maxLength: {
-                            value: 30,
-                            message:
-                              "Maximun 30 character only allow for register.",
-                          },
-                        })}
+                        {...register("firstName")}
                       />
                       <CgProfile />
                     </div>
@@ -70,22 +58,7 @@ const SignupPage = () => {
                         <input
                           type="text"
                           placeholder="lastName"
-                          {...register("lastName", {
-                            required: {
-                              value: true,
-                              message: "lastName required for signup",
-                            },
-                            minLength: {
-                              value: 3,
-                              message:
-                                "Minimun 3 character are necessary for register.",
-                            },
-                            maxLength: {
-                              value: 30,
-                              message:
-                                "Maximun 30 character only allow for register.",
-                            },
-                          })}
+                          {...register("lastName")}
                         />
                         <CgProfile />
                       </div>
@@ -94,7 +67,9 @@ const SignupPage = () => {
                 </div>
                 <div>
                   <div>
-                    {errors.email && <div>{errors.email.message}</div>}
+                    {errors.email && (
+                      <div className="text-red-500">{errors.email.message}</div>
+                    )}
                     <div>
                       <input
                         type="email"
@@ -110,59 +85,35 @@ const SignupPage = () => {
                   </div>
                 </div>
                 <div>
-                  {errors.password && <div>{errors.password.message}</div>}
+                  {errors.password && (
+                    <div className="text-red-500">
+                      {errors.password.message}
+                    </div>
+                  )}
                   <div>
                     <input
                       type="password"
                       placeholder="password"
-                      {...register("password", {
-                        required: {
-                          value: true,
-                          message: "Password is Required",
-                        },
-                        minLength: {
-                          value: 6,
-                          message: "Password is more than 6 character.",
-                        },
-                        maxLength: {
-                          value: 100,
-                          message: "Password is less than 100 character.",
-                        },
-                      })}
+                      {...register("password")}
                     />
                   </div>
                 </div>
-                {/* <div>
-                  {errors.confirmPassword && (
-                    <div>{errors.confirmPassword.message}</div>
+                <div>
+                  {errors.confirmpassword && (
+                    <div>{errors.confirmpassword.message}</div>
                   )}
                   <div>
                     <input
                       type="password"
                       placeholder="conform password"
-                      {...register("confirmPassword", {
-                        required: {
-                          value: true,
-                          message: "Password is Required",
-                        },
-                        minLength: {
-                          value: 6,
-                          message: "Password is more than 6 character.",
-                        },
-                        maxLength: {
-                          value: 100,
-                          message: "Passoword is less than 100 character.",
-                        },
-                        validate: (value) =>
-                          value === password || "password doen't match",
-                      })}
+                      {...register("confirmpassword")}
                     />
                   </div>
-                </div> */}
+                </div>
               </div>
               <div>
                 <div>
-                  <button>Register</button>
+                  <button type="submit">Register</button>
                 </div>
               </div>
             </div>
