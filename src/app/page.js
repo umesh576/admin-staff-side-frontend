@@ -1,6 +1,7 @@
 import Image from "next/image";
 import WorkBoard from "../component/WorkBoard";
 import SelectBoard from "../component/SelectBoard";
+import page from "./login/page";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <div>
           <SelectBoard />
         </div>
+        <p>umesh</p>
       </div>
     </div>
   );
