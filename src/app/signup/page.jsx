@@ -2,7 +2,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
-import { yupResolver } from "./../../../node_modules/@hookform/resolvers/yup/src/yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../schema/registerSchema";
 
 const SignupPage = () => {
   const {
