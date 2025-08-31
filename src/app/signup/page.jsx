@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,9 +14,14 @@ const SignupPage = () => {
     resolver: yupResolver(registerSchema),
   });
 
+  const [profile, setProfile] = useState(null);
+
+  const handleProfile = (e) => {
+    const file = e.target.files[0];
+    setProfile(URL.createObjectURL(file));
+  };
   const onSubmit = (data) => {
     console.log(data);
-    console.log("umesh");
   };
   return (
     <div className="absolute h-screen w-full bg-sky-300">
@@ -32,6 +37,34 @@ const SignupPage = () => {
                 <h1 className="text-3xl font-bold text-center">Signup</h1>
               </div>
               <div>
+                <div>
+                  <div>
+                    {errors.profilePicture && (
+                      <div>{errors.profilePicture.message}</div>
+                    )}
+
+                    <div>
+                      {profile ? (
+                        <div className="mt-4 w-44  border flex items-center justify-center overflow-hidden rounded-lg shadow">
+                          <img
+                            src={profile}
+                            alt="profile"
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      ) : (
+                        <p>this is image feild</p>
+                      )}
+                      <div className="">
+                        <input
+                          type="file"
+                          {...register("profilePicture")}
+                          onChange={handleProfile}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="flex flex-warp">
                   <div>
                     {errors.firstName && (
@@ -96,7 +129,9 @@ const SignupPage = () => {
                 </div>
                 <div>
                   {errors.confirmpassword && (
-                    <div>{errors.confirmpassword.message}</div>
+                    <div className="text-red-500">
+                      {errors.confirmpassword.message}
+                    </div>
                   )}
                   <div>
                     <input
@@ -105,6 +140,14 @@ const SignupPage = () => {
                       {...register("confirmpassword")}
                     />
                   </div>
+                </div>
+                <div>{errors.gender && <div>{errors.gender.message}</div>}</div>
+                <div>
+                  <input type="text" {...register("gender")} />
+                  <select name="gender" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Male">Female</option>
+                  </select>
                 </div>
               </div>
               <div>
