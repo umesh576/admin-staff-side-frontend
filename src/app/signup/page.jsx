@@ -74,12 +74,7 @@ const SignupPage = () => {
                       <input
                         type="email"
                         placeholder="jhon@gmail.com"
-                        {...register("email", {
-                          required: {
-                            value: true,
-                            message: "Email is required for login.",
-                          },
-                        })}
+                        {...register("email")}
                       />
                     </div>
                   </div>
