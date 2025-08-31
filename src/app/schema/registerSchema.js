@@ -49,4 +49,8 @@ export const registerSchema = yup.object().shape({
       "Unsupported format. Only JPG, JPEG, PNG allowed.",
       (value) => value && value[0] && SUPPORT_FORMAT.includes(value[0].type)
     ),
+  phonenumber: yup
+    .string()
+    .required("At least one number is nessary.")
+    .length(10, "Number have 10 character only."),
 });
