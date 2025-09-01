@@ -38,13 +38,12 @@ const SignupPage = () => {
 
   return (
     <div className="absolute h-screen w-full bg-sky-300">
-      <div className="w-full">
-        <div className="w-full flex absolute justify-center items-center h-full">
-          <div>
+      <div className="w-full h-full  flex justify-center items-center">
+        <div className="w-full ">
+          <div className="w-full flex justify-center ">
             <form
-              action=""
               onSubmit={handleSubmit(onSubmit)}
-              className="bg-white"
+              className="bg-white w-1/2 h-full"
             >
               <div>
                 <div>
@@ -72,6 +71,7 @@ const SignupPage = () => {
                         <div className="">
                           <input
                             type="file"
+                            placeholder="umesh"
                             {...register("profilePicture")}
                             onChange={handleProfile}
                           />
@@ -204,10 +204,9 @@ const SignupPage = () => {
                 </div>
               </div>
             </form>
-
-            <div>
-              <button>Sign up with google</button>
-            </div>
+          </div>
+          <div>
+            <button>Sign up with google</button>
           </div>
         </div>
       </div>
