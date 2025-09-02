@@ -206,7 +206,7 @@ const SignupPage = () => {
             </form>
           </div>
           <div>
-            <button>Sign up with google</button>
+            <button>Sign up somethign with google</button>
           </div>
         </div>
       </div>
