@@ -168,7 +168,8 @@ const SignupPage = () => {
 
                     <div>
                       <div>
-                        <Select
+                        <select name="" id=""></select>
+                        <select
                           {...register("gender")}
                           inputId="gender-id"
                           options={options}
