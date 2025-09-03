@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../schema/registerSchema";
@@ -10,11 +10,12 @@ const SignupPage = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
-  const [selectGender, setSelectGender] = useState(null);
+  // const [selectGender, setSelectGender] = useState(null);
 
   const options = [
     { value: "male", label: "Male" },
@@ -24,10 +25,10 @@ const SignupPage = () => {
 
   const [profile, setProfile] = useState(null);
 
-  const handleChange = (options) => {
-    setSelectGender(options);
-    console.log(options);
-  };
+  // const handleChange = (options) => {
+  //   setSelectGender(options);
+  //   console.log(options);
+  // };
   const handleProfile = (e) => {
     const file = e.target.files[0];
     setProfile(URL.createObjectURL(file));
@@ -40,12 +41,9 @@ const SignupPage = () => {
     <div className="absolute h-screen w-full bg-sky-300">
       <div className="w-full h-full  flex justify-center items-center">
         <div className="w-full ">
-          <div>
+          <div className="bg-white w-1/2 h-full">
             <div className="w-full flex justify-center ">
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="bg-white w-1/2 h-full"
-              >
+              <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div>
                   <div>
                     <h1 className="text-3xl font-bold text-center">Signup</h1>
@@ -168,15 +166,24 @@ const SignupPage = () => {
 
                     <div>
                       <div>
-                        <select name="" id=""></select>
-                        <select
-                          {...register("gender")}
-                          inputId="gender-id"
-                          options={options}
-                          value={selectGender}
-                          onChange={handleChange}
-                          placeholder="Select gender"
-                          className="outline-none"
+                        <Controller
+                          name="gender"
+                          control={control}
+                          render={({ field }) => (
+                            <Select
+                              instanceId="gender"
+                              inputId="gender-id"
+                              {...register("gender")}
+                              options={options}
+                              value={
+                                options.find((o) => o.value === field.value) ||
+                                null
+                              }
+                              onChange={(val) => field.onChange(val?.value)}
+                              placeholder="Select gender"
+                              className="outline-none"
+                            />
+                          )}
                         />
                       </div>
                     </div>
