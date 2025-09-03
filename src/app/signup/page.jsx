@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../schema/registerSchema";
 import Select from "react-select";
+import Image from "next/image";
 
 const SignupPage = () => {
   const {
@@ -40,10 +41,13 @@ const SignupPage = () => {
   return (
     <div className="absolute h-screen w-full bg-sky-300">
       <div className="w-full h-full  flex justify-center items-center">
-        <div className="w-full ">
-          <div className="bg-white w-1/2 h-full">
+        <div className="w-1/2 ">
+          <div className="bg-white w-full h-full">
             <div className="w-full flex justify-center ">
-              <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="w-full justify-center"
+              >
                 <div>
                   <div>
                     <h1 className="text-3xl font-bold text-center">Signup</h1>
@@ -55,7 +59,7 @@ const SignupPage = () => {
                           <div>{errors.profilePicture.message}</div>
                         )}
 
-                        <div>
+                        <div className=" flex items-center justify-around">
                           {profile ? (
                             <div className="mt-4 w-44  border flex items-center justify-center overflow-hidden rounded-lg shadow">
                               <img
@@ -65,7 +69,17 @@ const SignupPage = () => {
                               />
                             </div>
                           ) : (
-                            <p>this is image feild</p>
+                            <div>
+                              <div className="flex justify-center py-2">
+                                <Image
+                                  src={profile || "/image.jpg"}
+                                  alt="image"
+                                  width={150}
+                                  height={150}
+                                  className="border-2 border-black rounded-full border-dotted cursor-pointer "
+                                />
+                              </div>
+                            </div>
                           )}
                           <div className="">
                             <input
@@ -73,6 +87,7 @@ const SignupPage = () => {
                               placeholder="umesh"
                               {...register("profilePicture")}
                               onChange={handleProfile}
+                              className="bg-blue-300 px-3 py-3 border hidden"
                             />
                           </div>
                         </div>
