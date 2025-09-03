@@ -40,173 +40,175 @@ const SignupPage = () => {
     <div className="absolute h-screen w-full bg-sky-300">
       <div className="w-full h-full  flex justify-center items-center">
         <div className="w-full ">
-          <div className="w-full flex justify-center ">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="bg-white w-1/2 h-full"
-            >
-              <div>
-                <div>
-                  <h1 className="text-3xl font-bold text-center">Signup</h1>
-                </div>
+          <div>
+            <div className="w-full flex justify-center ">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="bg-white w-1/2 h-full"
+              >
                 <div>
                   <div>
+                    <h1 className="text-3xl font-bold text-center">Signup</h1>
+                  </div>
+                  <div>
                     <div>
-                      {errors.profilePicture && (
-                        <div>{errors.profilePicture.message}</div>
-                      )}
-
                       <div>
-                        {profile ? (
-                          <div className="mt-4 w-44  border flex items-center justify-center overflow-hidden rounded-lg shadow">
-                            <img
-                              src={profile}
-                              alt="profile"
-                              className="object-cover w-full h-full"
+                        {errors.profilePicture && (
+                          <div>{errors.profilePicture.message}</div>
+                        )}
+
+                        <div>
+                          {profile ? (
+                            <div className="mt-4 w-44  border flex items-center justify-center overflow-hidden rounded-lg shadow">
+                              <img
+                                src={profile}
+                                alt="profile"
+                                className="object-cover w-full h-full"
+                              />
+                            </div>
+                          ) : (
+                            <p>this is image feild</p>
+                          )}
+                          <div className="">
+                            <input
+                              type="file"
+                              placeholder="umesh"
+                              {...register("profilePicture")}
+                              onChange={handleProfile}
                             />
                           </div>
-                        ) : (
-                          <p>this is image feild</p>
-                        )}
-                        <div className="">
-                          <input
-                            type="file"
-                            placeholder="umesh"
-                            {...register("profilePicture")}
-                            onChange={handleProfile}
-                          />
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-warp">
-                    <div>
-                      {errors.firstName && (
-                        <div className="text-red-500">
-                          {errors.firstName.message}
-                        </div>
-                      )}
-                      <div className="flex justify-around items-center">
-                        <input
-                          type="text"
-                          placeholder="Firstname"
-                          {...register("firstName")}
-                        />
-                        <CgProfile />
-                      </div>
-                    </div>
-                    <div>
+                    <div className="flex flex-warp">
                       <div>
-                        {errors.lastName && (
+                        {errors.firstName && (
                           <div className="text-red-500">
-                            {errors.lastName.message}
+                            {errors.firstName.message}
                           </div>
                         )}
                         <div className="flex justify-around items-center">
                           <input
                             type="text"
-                            placeholder="lastName"
-                            {...register("lastName")}
+                            placeholder="Firstname"
+                            {...register("firstName")}
                           />
                           <CgProfile />
                         </div>
                       </div>
+                      <div>
+                        <div>
+                          {errors.lastName && (
+                            <div className="text-red-500">
+                              {errors.lastName.message}
+                            </div>
+                          )}
+                          <div className="flex justify-around items-center">
+                            <input
+                              type="text"
+                              placeholder="lastName"
+                              {...register("lastName")}
+                            />
+                            <CgProfile />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div>
                     <div>
-                      {errors.email && (
+                      <div>
+                        {errors.email && (
+                          <div className="text-red-500">
+                            {errors.email.message}
+                          </div>
+                        )}
+                        <div>
+                          <input
+                            type="email"
+                            placeholder="jhon@gmail.com"
+                            {...register("email")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      {errors.password && (
                         <div className="text-red-500">
-                          {errors.email.message}
+                          {errors.password.message}
                         </div>
                       )}
                       <div>
                         <input
-                          type="email"
-                          placeholder="jhon@gmail.com"
-                          {...register("email")}
+                          type="password"
+                          placeholder="password"
+                          {...register("password")}
                         />
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    {errors.password && (
-                      <div className="text-red-500">
-                        {errors.password.message}
-                      </div>
-                    )}
                     <div>
-                      <input
-                        type="password"
-                        placeholder="password"
-                        {...register("password")}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    {errors.confirmpassword && (
-                      <div className="text-red-500">
-                        {errors.confirmpassword.message}
-                      </div>
-                    )}
-                    <div>
-                      <input
-                        type="password"
-                        placeholder="conform password"
-                        {...register("confirmpassword")}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    {errors.gender && (
-                      <div className="text-red-500">
-                        {errors.gender.message}
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    <div>
-                      <Select
-                        {...register("gender")}
-                        inputId="gender-id"
-                        options={options}
-                        value={selectGender}
-                        onChange={handleChange}
-                        placeholder="Select gender"
-                        className="outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div>
+                      {errors.confirmpassword && (
+                        <div className="text-red-500">
+                          {errors.confirmpassword.message}
+                        </div>
+                      )}
                       <div>
                         <input
-                          type="number"
-                          {...register("phonenumber")}
-                          placeholder="98*****890"
+                          type="password"
+                          placeholder="conform password"
+                          {...register("confirmpassword")}
                         />
                       </div>
                     </div>
+                    <div>
+                      {errors.gender && (
+                        <div className="text-red-500">
+                          {errors.gender.message}
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <div>
+                        <Select
+                          {...register("gender")}
+                          inputId="gender-id"
+                          options={options}
+                          value={selectGender}
+                          onChange={handleChange}
+                          placeholder="Select gender"
+                          className="outline-none"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <input
+                            type="number"
+                            {...register("phonenumber")}
+                            placeholder="98*****890"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
                   <div>
-                    <p>
-                      <a href="/login">Already Login</a>
-                    </p>
+                    <div>
+                      <p>
+                        <a href="/login">Already Login</a>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div>
                   <div>
-                    <button type="submit">Register</button>
+                    <div>
+                      <button type="submit">Register</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <div>
-            <button>Sign up with google</button>
+              </form>
+            </div>
+            <div>
+              <button>Sign up with google</button>
+            </div>
           </div>
         </div>
       </div>
