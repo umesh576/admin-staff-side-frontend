@@ -33,6 +33,7 @@ const SignupPage = () => {
   // };
   const handleProfile = (e) => {
     const file = e.target.files[0];
+    if (!file) return;
     setProfile(URL.createObjectURL(file));
   };
   const onSubmit = (data) => {
@@ -58,7 +59,9 @@ const SignupPage = () => {
                       <div className="w-full">
                         <div>
                           {errors.profilePicture && (
-                            <div>{errors.profilePicture.message}</div>
+                            <div className="text-red-500">
+                              {errors.profilePicture.message}
+                            </div>
                           )}
 
                           <div className=" py-5">
@@ -220,7 +223,7 @@ const SignupPage = () => {
                           <div className="w-2/3 border rounded-lg p-2">
                             <input
                               type="number"
-                              {...register("phonenumber")}
+                              {...register("phoneNumber")}
                               placeholder="Phone Number"
                               className="outline-none w-full"
                             />

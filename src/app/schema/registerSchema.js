@@ -1,8 +1,7 @@
 import * as yup from "yup";
-import { string } from "yup";
 
 const SUPPORT_FORMAT = ["image/jpeg", "image/png", "image/jpg"];
-const MAX_SIZE = 2 * 1024 * 1024;
+const MAX_SIZE = 3 * 1024 * 1024;
 export const registerSchema = yup.object().shape({
   password: yup
     .string()
@@ -18,7 +17,8 @@ export const registerSchema = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Password must be match.")
     .required("Confirmpassword must required."),
 
-  firstName: string()
+  firstName: yup
+    .string()
     .required("Firstname is required.")
     .min(3, "Minimun 3 character are necessary for register.")
     .max(30, "Maximun 30 character only allow for register."),
@@ -41,7 +41,7 @@ export const registerSchema = yup.object().shape({
     .mixed()
     .test(
       "fileSize",
-      "File size is too large. Max 2MB.",
+      "File size is too large. Max 3MB.",
       (value) => value && value[0] && value[0].size <= MAX_SIZE
     )
     .test(
@@ -49,8 +49,9 @@ export const registerSchema = yup.object().shape({
       "Unsupported format. Only JPG, JPEG, PNG allowed.",
       (value) => value && value[0] && SUPPORT_FORMAT.includes(value[0].type)
     ),
-  phonenumber: yup
+  phoneNumber: yup
     .string()
     .required("At least one number is nessary.")
-    .length(10, "Number have 10 character only."),
+    .length(10, "Number have 10 character only.")
+    .matches("/[0-9]/", "please provide valid number"),
 });
