@@ -42,8 +42,8 @@ const SignupPage = () => {
 
   return (
     <div className="absolute  w-full bg-sky-300">
-      <div className="w-full py-20  flex justify-center items-center">
-        <div className="w-1/2 ">
+      <div className="w-full py-20 max-sm:py-10 flex justify-center items-center">
+        <div className="w-1/2 max-sm:w-full max-sm:p-5 ">
           <div className="bg-white w-full px-4 py-3">
             <div className="w-full flex justify-center ">
               <form
@@ -96,14 +96,14 @@ const SignupPage = () => {
                                 placeholder="Imput file"
                                 {...register("profilePicture")}
                                 onChange={handleProfile}
-                                className=" px-3 py-3 border-2 border-black border-dotted "
+                                className=" px-3 py-3 border-2 border-black border-dotted max-sm:w-1/2"
                               />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className=" w-full flex flex-warp  gap-2 ">
-                        <div className="w-full">
+                      <div className=" w-full flex flex-warp  gap-2 max-sm:block ">
+                        <div className="w-full max-sm:py-4">
                           {errors.firstName && (
                             <div className="text-red-500">
                               {errors.firstName.message}
@@ -138,7 +138,7 @@ const SignupPage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="w-2/3  py-4 ">
+                      <div className="w-2/3 max-sm:w-full py-4 ">
                         <div className="w-full">
                           {errors.email && (
                             <div className="text-red-500">
@@ -156,13 +156,13 @@ const SignupPage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="w-full">
+                      <div className="w-full ">
                         {errors.password && (
                           <div className="text-red-500">
                             {errors.password.message}
                           </div>
                         )}
-                        <div className="w-2/3 p-2 border rounded-lg">
+                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg">
                           <input
                             className="w-full outline-none"
                             type="password"
@@ -177,7 +177,7 @@ const SignupPage = () => {
                             {errors.confirmpassword.message}
                           </div>
                         )}
-                        <div className="w-2/3 p-2 border rounded-lg">
+                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg">
                           <input
                             type="password"
                             placeholder="conform password"
@@ -194,7 +194,7 @@ const SignupPage = () => {
                         )}
                       </div>
 
-                      <div className="w-2/3">
+                      <div className="w-2/3 max-sm:w-full">
                         <div>
                           <Controller
                             name="gender"
@@ -220,7 +220,13 @@ const SignupPage = () => {
                       </div>
                       <div className="w-full py-4">
                         <div>
-                          <div className="w-2/3 border rounded-lg p-2">
+                          {errors.phoneNumber && (
+                            <div className="text-red-500">
+                              {errors.phoneNumber.message}
+                            </div>
+                          )}
+
+                          <div className="w-2/3 max-sm:w-full border rounded-lg p-2">
                             <input
                               type="number"
                               {...register("phoneNumber")}

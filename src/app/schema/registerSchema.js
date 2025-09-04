@@ -51,7 +51,7 @@ export const registerSchema = yup.object().shape({
     ),
   phoneNumber: yup
     .string()
-    .required("At least one number is nessary.")
+    .required("Phone number is required.")
     .length(10, "Number have 10 character only.")
-    .matches("/[0-9]/", "please provide valid number"),
+    .matches(/[0-9]/, "please provide valid number"),
 });
