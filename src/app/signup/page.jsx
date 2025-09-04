@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../schema/registerSchema";
 import Select from "react-select";
 import Image from "next/image";
+import { MdEmail } from "react-icons/md";
 
 const SignupPage = () => {
   const {
@@ -42,7 +43,7 @@ const SignupPage = () => {
     <div className="absolute h-screen w-full bg-sky-300">
       <div className="w-full h-full  flex justify-center items-center">
         <div className="w-1/2 ">
-          <div className="bg-white w-full h-full">
+          <div className="bg-white w-full h-full px-4 py-3">
             <div className="w-full flex justify-center ">
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -59,8 +60,8 @@ const SignupPage = () => {
                           <div>{errors.profilePicture.message}</div>
                         )}
 
-                        <div className=" flex items-center justify-around">
-                          {profile ? (
+                        <div className=" py-5">
+                          {/* {profile ? (
                             <div className="mt-4 w-44  border flex items-center justify-center overflow-hidden rounded-lg shadow">
                               <img
                                 src={profile}
@@ -68,78 +69,81 @@ const SignupPage = () => {
                                 className="object-cover w-full h-full"
                               />
                             </div>
-                          ) : (
-                            <div>
-                              <div className="flex justify-center py-2">
-                                <Image
-                                  src={profile || "/image.jpg"}
-                                  alt="image"
-                                  width={150}
-                                  height={150}
-                                  className="border-2 border-black rounded-full border-dotted cursor-pointer "
-                                />
-                              </div>
+                          ) : ( */}
+                          <div>
+                            <div className="flex justify-center py-2">
+                              <Image
+                                src={profile || "/image.jpg"}
+                                alt="image"
+                                width={150}
+                                height={150}
+                                className="border-2 border-black rounded-full border-dotted cursor-pointer "
+                              />
                             </div>
-                          )}
-                          <div className="">
+                          </div>
+                          {/* )} */}
+                          <div className="flex justify-center">
                             <input
                               type="file"
-                              placeholder="umesh"
+                              placeholder="Imput file"
                               {...register("profilePicture")}
                               onChange={handleProfile}
-                              className="bg-blue-300 px-3 py-3 border hidden"
+                              className=" px-3 py-3 border-2 border-black border-dotted "
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-warp">
-                      <div>
+                    <div className="flex flex-warp gap-2 w-full">
+                      <div className="w-full">
                         {errors.firstName && (
                           <div className="text-red-500">
                             {errors.firstName.message}
                           </div>
                         )}
-                        <div className="flex justify-around items-center">
+                        <div className="flex justify-around items-center border px-3 py-2 rounded-lg w-full ">
                           <input
                             type="text"
                             placeholder="Firstname"
                             {...register("firstName")}
+                            className="outline-none w-full"
                           />
                           <CgProfile />
                         </div>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <div>
                           {errors.lastName && (
                             <div className="text-red-500">
                               {errors.lastName.message}
                             </div>
                           )}
-                          <div className="flex justify-around items-center">
+                          <div className="flex justify-around items-center border px-3 py-2 rounded-lg w-full">
                             <input
                               type="text"
                               placeholder="lastName"
                               {...register("lastName")}
+                              className="outline-none w-full"
                             />
                             <CgProfile />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div className="w-2/3  py-4">
                       <div>
                         {errors.email && (
                           <div className="text-red-500">
                             {errors.email.message}
                           </div>
                         )}
-                        <div>
+                        <div className="flex justify-between border items-center p-2 rounded-lg">
                           <input
                             type="email"
                             placeholder="jhon@gmail.com"
                             {...register("email")}
                           />
+                          <MdEmail />
                         </div>
                       </div>
                     </div>
