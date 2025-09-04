@@ -7,6 +7,8 @@ import { registerSchema } from "../schema/registerSchema";
 import Select from "react-select";
 import Image from "next/image";
 import { MdEmail } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const SignupPage = () => {
   const {
@@ -26,6 +28,8 @@ const SignupPage = () => {
   ];
 
   const [profile, setProfile] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [conshowPassword, setconShowPassword] = useState(false);
 
   // const handleChange = (options) => {
   //   setSelectGender(options);
@@ -162,13 +166,19 @@ const SignupPage = () => {
                             {errors.password.message}
                           </div>
                         )}
-                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg">
+                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg flex">
                           <input
                             className="w-full outline-none"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             placeholder="password"
                             {...register("password")}
                           />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? <FaEye /> : <FaEyeSlash />}
+                          </button>
                         </div>
                       </div>
                       <div className="w-full py-4">
@@ -177,13 +187,19 @@ const SignupPage = () => {
                             {errors.confirmpassword.message}
                           </div>
                         )}
-                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg">
+                        <div className="w-2/3 max-sm:w-full p-2 border rounded-lg flex">
                           <input
                             type="password"
                             placeholder="conform password"
                             {...register("confirmpassword")}
                             className="w-full outline-none"
                           />
+                          <button
+                            type="button"
+                            onClick={() => setconShowPassword(!conshowPassword)}
+                          >
+                            {conshowPassword ? <FaEye /> : <FaEyeSlash />}
+                          </button>
                         </div>
                       </div>
                       <div>
