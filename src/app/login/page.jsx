@@ -16,7 +16,7 @@ const loginPage = () => {
     console.log(data);
   };
   return (
-    <div className="w-full bg-blue-400 absolute">
+    <div className="w-full    bg-blue-400 absolute">
       <div className="w-full">
         <div className="flex justify-center items-center h-screen max-sm:block max-sm:h-180   ">
           <form
