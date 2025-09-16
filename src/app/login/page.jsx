@@ -18,26 +18,7 @@ const loginPage = () => {
   return (
     <div className="w-full bg-blue-400 absolute">
       <div className="w-full">
-        <div
-          className="flex
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        justify-center items-center h-screen max-sm:block max-sm:h-180   "
-        >
+        <div className="flex justify-center items-center h-screen max-sm:block max-sm:h-180   ">
           <form
             action=""
             className=" w-1/2 flex justify-center py-3 max-sm:w-full max-sm:px-3 max-sm:mt-10"
