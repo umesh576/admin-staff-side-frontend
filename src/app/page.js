@@ -10,11 +10,10 @@ export default function Home() {
         <div>
           <WorkBoard />
         </div>
-        <div>
+        <div className="w-full">
           <SelectBoard />
         </div>
       </div>
-      <div className="w-full border-1"> joshi</div>
     </div>
   );
 }
