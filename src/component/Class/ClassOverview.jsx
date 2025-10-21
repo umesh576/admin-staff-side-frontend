@@ -33,10 +33,10 @@ const ClassOverview = () => {
   ];
 
   return (
-    <div>
+    <div className="w-full flex flex-row">
       <div>
         {classDetails.map((classDetail, index) => (
-          <ClassComponent classDetails={classDetail} key={index} />
+          <ClassComponent classDetail={classDetail} key={index} />
         ))}
       </div>
     </div>
