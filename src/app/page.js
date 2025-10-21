@@ -13,8 +13,8 @@ export default function Home() {
         <div>
           <SelectBoard />
         </div>
-        <p>umesh</p>
       </div>
+      <div className="w-full border-1"> joshi</div>
     </div>
   );
 }
