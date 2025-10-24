@@ -1,10 +1,7 @@
 import React from "react";
 
 const StudentCard = ({ studentDetail }) => {
-  useEffect(() => {
-    console.log("nsfjd", studentDetail);
-  }, []);
-  return <div>{studentDetail.name}</div>;
+  return <div>umehs josnjf</div>;
 };
 
 export default StudentCard;

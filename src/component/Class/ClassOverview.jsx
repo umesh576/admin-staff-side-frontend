@@ -1,5 +1,7 @@
-import React from "react";
+import React, { use } from "react";
+import { useState, useEffect } from "react";
 import ClassComponent from "./ClassComponent";
+import StudentCard from "../Student/StudentCard";
 
 const ClassOverview = () => {
   const classDetails = [
@@ -31,13 +33,46 @@ const ClassOverview = () => {
       ],
     },
   ];
+  const [showStudents, setShowStudents] = useState(false);
+  const [showclass, setshowclass] = useState(true);
+  // const [students, setStudent] = useState([]);
+  const students = [];
+
+  // useEffect(() => {
+  //   console.log("showstudent", showStudents);
+  //   console.log("showclass", showclass);
+  //   console.log("student", students);
+  // }, [showStudents, showclass, students]);
+  console.log("student", students);
 
   return (
     <div className="w-full flex flex-row">
       <div>
-        {classDetails.map((classDetail, index) => (
-          <ClassComponent classDetail={classDetail} key={index} />
-        ))}
+        {showclass && (
+          <button
+            onClick={() => {
+              setShowStudents(true);
+              setshowclass(!showclass);
+              classDetails.map((classDetail, index) => {
+                students.push(classDetail.studnet);
+              });
+            }}
+          >
+            {classDetails.map((classDetail, index) => (
+              <ClassComponent classDetail={classDetail} key={index} />
+            ))}{" "}
+          </button>
+        )}
+        {showStudents && (
+          <div>
+            <p>umesh</p>
+            <p>umesh</p>
+            {students.map((studentGroup, index) => {
+              <StudentCard key={index} studentDetail={studentGroup} />;
+            })}
+          </div>
+        )}
+        {students.length > 0 && <p>umesh</p>}
       </div>
     </div>
   );

@@ -51,6 +51,7 @@ const SelectBoard = () => {
       {selectPoint == "admin" && <div>admin panel</div>}
       {selectPoint == "test" && <div>test panel</div>}
       {selectPoint == "result" && <div>result panel</div>}
+      {!selectPoint && <div>Please select a board</div>}
     </div>
   );
 };
