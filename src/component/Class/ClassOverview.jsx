@@ -14,7 +14,7 @@ const ClassOverview = () => {
     },
     {
       className: "9th Grade",
-      section: "B",
+      npm: "B",
       teacher: "Ms. Johnson",
       studnet: [
         { name: "sita", age: 14 },

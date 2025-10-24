@@ -11,6 +11,7 @@ const ClassComponent = ({ classDetail }) => {
       onClick={() => {
         setStudents(classDetail.studnet);
         setShowStudents(!showStudents);
+        console.log(students);
       }}
     >
       <h2>
@@ -21,7 +22,7 @@ const ClassComponent = ({ classDetail }) => {
       <div>
         {showStudents &&
           students.map((student, index) => (
-            <ShowStudent studentDetails={students} key={index} />
+            <ShowStudent studentDetails={student} key={index} />
           ))}
       </div>
     </div>
